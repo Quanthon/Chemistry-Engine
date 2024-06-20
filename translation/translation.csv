@@ -1,0 +1,85 @@
+keys,cn,en
+start_game,开始游戏,Start Game
+buy,添加,Add
+undo,移除,Remove
+produce,生产,Produce
+preview,预览,Preview
+cancel,取消,Cancel
+submit,提交,Submit
+shop_title,选择一个反应添加,Choose a reaction to add
+skip,跳过,Skip
+upgrade,扩大安全\n范围,Expand the\n safe range
+reactions,反应,Reactions
+stats,统计,Stats
+count,数量,Count
+position,位置,Position
+confirm,确认,Confirm
+restart,重新开始,Restart
+to_menu,返回主界面,Back to menu
+
+tooltip_mutation,本次任务的特殊情况,Special situation of this task
+tooltip_screen,反应堆。反应的步骤：\n1.与反应图案匹配的原子被消除\n2.原子下落\n3.用随机原子填充反应堆\n4.若没有任何原子消除，反应停止。否则重复1-4步,"Reactor. The steps of the reaction:\n1. The atoms matching the reaction pattern are eliminated\n2. Atoms fall\n3. Fill the reactor with random atoms\n4. If no atoms are eliminated, the reaction stops. Otherwise, repeat steps 1-4"
+tooltip_speed_options,设置反应动画速度,Set the speed of reaction animation
+tooltip_reactions,所有反应结构\n注意：\n1.反应的顺序并不会影响最终结果。\n2.必须位置颜色完全匹配才会消除。不计旋转与翻转匹配,"All reaction structures\nNote:\n1. The order of reactions does not affect the final result.\n2. The position and color must match completely to be eliminated. No rotation or flip matching is counted."
+tooltip_stats_count,统计包含指定颜色的反应数,Count the number of reactions containing the specified color
+tooltip_stats_position,统计颜色的各个位置频率,Count the frequency of each position of the color
+
+tooltip_energy,本次任务已积累的能量,The energy accumulated in this task
+tooltip_preview_energy,预览中生产的能量,The energy produced in the preview mode
+tooltip_money,你持有的金钱。进行操作消耗金钱。通过完成任务获取。,The money you have. Operations consume money. Obtain by completing tasks.
+tooltip_insurance,你持有的保险数。当能量超过安全阈值时，持有保险不会使游戏立即结束。,"The number of insurance you have. When the energy exceeds the safe threshold, holding insurance will not end the game immediately."
+tooltip_skip,跳过后，本次添加所需费用不增长,"If skip, the cost of this purchase will not increase."
+tooltip_buy,从随机三个反应中选择一个添加。添加后，本回合添加费用+1,"Choose one from three random reactions to add, and the cost of adding this round +1 after adding"
+tooltip_undo,移除添加的上一个反应,Remove the last reaction added this round
+tooltip_upgrade,提高安全范围。但是相应的，获取最高报酬的难度也增加\n使用后本回合费用增加1倍,"Expand the safe range. However, the difficulty of getting the highest reward also increases.\nThe cost of this round increases by 100% after use"
+tooltip_produce,开始反应并获取能量，一旦生产开始，直到无法反应才会停止。\n使用后本回合费用+1,"Start the reaction and get energy, once the production starts, it will not stop until it cannot react.\n The cost of this round +1 after use"
+tooltip_preview,预览反应情况。不会收集预览添加的能量，因此也不用担心爆了。\n使用后本回合费用+1,"Preview the reaction. The energy added by the preview will not be collected, so don't worry about the engine crashing. \n The cost of this round +1 after use"
+tooltip_submit,提交能量，完成任务，获得对应的金钱,"Submit energy, complete the task, and get the corresponding money."
+tooltip_restart,重新开始,Restart
+tooltip_menu,返回主界面,Back to menu
+
+tooltip_graph,表示任务所需能量和安全范围的曲线,Graph of the energy required and the safe range of the task
+graph_tooltip_goal_min,完成任务所需的最低能量,The minimum energy required to complete the task
+graph_tooltip_goal_max,安全阈值，超过这个值会爆炸,"The safe threshold, exceeding this value will explode"
+graph_tooltip_reward_min,完成任务至少能获得的金钱,The minimum money you can get for completing the task
+graph_tooltip_reward_max,完成任务最多能获得的金钱,The maximum money you can get for completing the task
+graph_tooltip_energy,当前能量,Current energy
+graph_tooltip_reward,此时提交能量所获得的金钱,The money obtained by submitting energy at this time
+
+win,你过关！\n难度：{difficulty}\n剩余金钱：{money},You win!\nDifficulty: {difficulty}\nRemaining money: {money}
+game over,游戏结束,Game Over
+game_over_explode,彻底爆了！\n（提示：避免添加过多反应。当你不确定时，多使用预览）,"Boom!\n(Tip: Avoid adding too many reactions. When you are not sure, use preview mode)"
+game_over_money,你没有足够的金钱生产,You don't have enough money to produce.
+message_turn_start,"任务{level}{difficulty}\n{mutation}最低能量：{goal_min},安全阈值：{goal_max}","Task {level}\nSpecial: {mutation}\nMinimum energy: {goal_min}, Safe threshold: {goal_max}"
+message_new_color,增加{color}，基础费用增加，反应炉尺寸扩大至{size}格,"Add {color}, the reactor size is expanded to {size}"
+message_more_energy,能量需求增加,"Energy requirements increase"
+message_explode,爆了！\n你的能量超过了安全阈值{safe}，好在有保险保护\n本次生产无效,"Boom!\nYour energy has exceeded the safe threshold {safe}, but you have insurance to protect you.\nThis production is invalid."
+
+level_count,任务数,Tasks Count
+difficulty_0,简单难度,Easy
+difficulty_0_detail,适合新手，各种资源充足，任务容易完成,"For beginners, abundant resources, tasks"
+difficulty_1,普通难度,Normal
+difficulty_1_detail,资源较多，任务较容易完成,"More resources, easier tasks"
+difficulty_2,困难难度,Hard
+difficulty_2_detail,每个回合都有特殊情况\n资源较少，任务较难完成,"Special situations in each round\nFewer resources, harder tasks"
+difficulty_3,地狱难度,Unfair
+difficulty_3_detail,每个回合都有特殊情况\n任务更难完成\n但作者是可以通关这个难度的！,"Special situations in each round\nVery few resources, very hard tasks\nBut the author can pass this difficulty!"
+
+white,白色,White
+red,红色,Red
+green,绿色,Green
+blue,蓝色,Blue
+yellow,黄色,Yellow
+magenta,粉色,Megenta
+cyan,青色,Cyan
+
+mutation,特殊,Special
+mutation_more_color,{color}生成的概率增加1倍,The probability of generating {color} increases by 100%
+mutation_odd_column_color,奇数列生成{color}的概率增加2倍,The probability of generating {color} in odd columns increases by 200%
+mutation_column_color,第{column}列生成{color}的概率增加5倍,The probability of generating {color} in column {column} increases by 500%
+mutation_no_color,不会生成{color},Will not generate {color}
+mutation_more_area,反应堆尺寸提高至{size}格,The size of the reactor is increased to {size}
+mutation_less_area,反应堆尺寸降低至{size}格,The size of the reactor is reduced to {size}
+mutation_hard_produce,生产花费更多金钱，但是预览花费的金钱降低,"Production costs more money, but the cost of previewing is reduced"
+mutation_more_goal,任务最低要求能量提高,"The minimum energy required for the task is increased"
+mutation_less_safe,安全范围缩小,"The safe range is reduced"

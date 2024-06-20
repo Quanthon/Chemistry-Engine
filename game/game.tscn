@@ -1,0 +1,658 @@
+[gd_scene load_steps=18 format=3 uid="uid://cv1rvmj7v5pxt"]
+
+[ext_resource type="Script" path="res://game/game.gd" id="1_g4quw"]
+[ext_resource type="Theme" uid="uid://c8ccgu4vixc2n" path="res://ui/theme/theme.tres" id="1_xj8fa"]
+[ext_resource type="Script" path="res://ui/screen.gd" id="2_rdrqb"]
+[ext_resource type="Script" path="res://ui/graph.gd" id="3_yam7p"]
+[ext_resource type="Script" path="res://ui/reaction/reaction_manager.gd" id="4_87ph1"]
+[ext_resource type="Script" path="res://ui/shop.gd" id="5_22o64"]
+[ext_resource type="Texture2D" uid="uid://svrs61bx16ot" path="res://assets/energy.png" id="6_w5g5a"]
+[ext_resource type="Texture2D" uid="uid://dlnyiyfrhthcw" path="res://assets/preview_energy.png" id="7_5xhhb"]
+[ext_resource type="Texture2D" uid="uid://c8m0mqwfgpsgl" path="res://assets/coin.png" id="7_r24g0"]
+[ext_resource type="Texture2D" uid="uid://ty00o1w076cd" path="res://assets/sheild.png" id="8_j35mt"]
+[ext_resource type="Texture2D" uid="uid://dorce773ljpr0" path="res://assets/restart .svg" id="10_8d7xd"]
+[ext_resource type="Texture2D" uid="uid://hcpo7n0fa5kr" path="res://assets/home.svg" id="10_kd7ct"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_q80u5"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_ul2xd"]
+events = [SubResource("InputEventKey_q80u5")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wot08"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="InputEventKey" id="InputEventKey_gsuib"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="Shortcut" id="Shortcut_5ahkg"]
+events = [SubResource("InputEventKey_wot08"), SubResource("InputEventKey_gsuib")]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xj8fa")
+script = ExtResource("1_g4quw")
+color_count = 3
+
+[node name="Left" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 520.0
+offset_bottom = 680.0
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="LevelInfo" type="Label" parent="Left"]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "tooltip_mutation"
+mouse_filter = 1
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Left"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Screen" type="Control" parent="Left/VBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+clip_contents = true
+custom_minimum_size = Vector2(480, 480)
+layout_mode = 2
+tooltip_text = "tooltip_screen"
+script = ExtResource("2_rdrqb")
+
+[node name="SpeedOptions" type="HBoxContainer" parent="Left/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+tooltip_text = "tooltip_speed_options"
+theme_override_constants/separation = 10
+
+[node name="Button1" type="Button" parent="Left/VBoxContainer/SpeedOptions"]
+layout_mode = 2
+size_flags_horizontal = 7
+mouse_filter = 1
+disabled = true
+text = "x1"
+
+[node name="Button2" type="Button" parent="Left/VBoxContainer/SpeedOptions"]
+layout_mode = 2
+size_flags_horizontal = 7
+mouse_filter = 1
+text = "x2"
+
+[node name="Button3" type="Button" parent="Left/VBoxContainer/SpeedOptions"]
+layout_mode = 2
+size_flags_horizontal = 7
+mouse_filter = 1
+text = "x5"
+
+[node name="Button4" type="Button" parent="Left/VBoxContainer/SpeedOptions"]
+layout_mode = 2
+size_flags_horizontal = 7
+mouse_filter = 1
+text = "Max"
+
+[node name="ReactionManager" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 560.0
+offset_top = 60.0
+offset_right = 1240.0
+offset_bottom = 340.0
+script = ExtResource("4_87ph1")
+
+[node name="TabContainer" type="TabContainer" parent="ReactionManager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="reactions" type="TabBar" parent="ReactionManager/TabContainer"]
+layout_mode = 2
+focus_mode = 0
+
+[node name="RContainer" type="HFlowContainer" parent="ReactionManager/TabContainer/reactions"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "tooltip_reactions"
+
+[node name="stats" type="TabBar" parent="ReactionManager/TabContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+
+[node name="Control" type="VBoxContainer" parent="ReactionManager/TabContainer/stats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ReactionManager/TabContainer/stats/Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 2
+tooltip_text = "tooltip_stats_count"
+
+[node name="Label" type="Label" parent="ReactionManager/TabContainer/stats/Control/HBoxContainer"]
+layout_mode = 2
+text = "count"
+
+[node name="CountContainer" type="HFlowContainer" parent="ReactionManager/TabContainer/stats/Control/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ReactionManager/TabContainer/stats/Control"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 2
+tooltip_text = "tooltip_stats_position"
+
+[node name="Label" type="Label" parent="ReactionManager/TabContainer/stats/Control/HBoxContainer2"]
+layout_mode = 2
+text = "position"
+
+[node name="PositionContainer" type="HFlowContainer" parent="ReactionManager/TabContainer/stats/Control/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="ResourcesInfo" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 560.0
+offset_top = 380.0
+offset_right = 1240.0
+offset_bottom = 500.0
+
+[node name="HBoxContainer" type="GridContainer" parent="ResourcesInfo"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResourcesInfo/HBoxContainer"]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+tooltip_text = "tooltip_energy"
+
+[node name="TextureRect" type="TextureRect" parent="ResourcesInfo/HBoxContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_w5g5a")
+expand_mode = 2
+
+[node name="EnergyInfo" type="Label" parent="ResourcesInfo/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ResourcesInfo/HBoxContainer"]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+tooltip_text = "tooltip_money"
+
+[node name="TextureRect" type="TextureRect" parent="ResourcesInfo/HBoxContainer/HBoxContainer2"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("7_r24g0")
+expand_mode = 2
+
+[node name="MoneyInfo" type="Label" parent="ResourcesInfo/HBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PreviewBar" type="HBoxContainer" parent="ResourcesInfo/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+tooltip_text = "tooltip_preview_energy"
+
+[node name="TextureRect" type="TextureRect" parent="ResourcesInfo/HBoxContainer/PreviewBar"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("7_5xhhb")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="ResourcesInfo/HBoxContainer/PreviewBar"]
+layout_mode = 2
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ResourcesInfo/HBoxContainer"]
+custom_minimum_size = Vector2(90, 40)
+layout_mode = 2
+tooltip_text = "tooltip_insurance"
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="ResourcesInfo/HBoxContainer/HBoxContainer3"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("8_j35mt")
+expand_mode = 2
+
+[node name="InsuranceInfo" type="Label" parent="ResourcesInfo/HBoxContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Graph" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 760.0
+offset_top = 380.0
+offset_right = 1240.0
+offset_bottom = 500.0
+tooltip_text = "tooltip_graph"
+mouse_filter = 1
+script = ExtResource("3_yam7p")
+
+[node name="Operations" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = 180.0
+offset_right = 600.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-400, 260)
+theme_override_constants/h_separation = 20
+columns = 4
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Operations"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_constants/separation = 10
+
+[node name="Buy" type="Button" parent="Operations/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 11
+tooltip_text = "tooltip_buy"
+focus_mode = 0
+text = "buy"
+
+[node name="Undo" type="Button" parent="Operations/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 11
+focus_mode = 0
+text = "undo"
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="Operations"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 7
+theme_override_constants/separation = 10
+
+[node name="Produce" type="Button" parent="Operations/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 11
+tooltip_text = "tooltip_produce"
+focus_mode = 0
+text = "produce
+"
+
+[node name="Preview" type="Button" parent="Operations/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 11
+tooltip_text = "tooltip_preview"
+focus_mode = 0
+text = "preview
+"
+
+[node name="CancelPreview" type="Button" parent="Operations/HBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 11
+tooltip_text = "tooltip_preview"
+focus_mode = 0
+text = "cancel"
+
+[node name="Submit" type="Button" parent="Operations"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "tooltip_submit"
+focus_mode = 0
+text = "submit"
+
+[node name="Upgrade" type="Button" parent="Operations"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = "tooltip_upgrade"
+focus_mode = 0
+text = "upgrade"
+
+[node name="Control" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -24.0
+offset_bottom = 68.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Restart" type="Button" parent="Control"]
+layout_mode = 2
+tooltip_text = "tooltip_restart"
+shortcut = SubResource("Shortcut_ul2xd")
+icon = ExtResource("10_8d7xd")
+
+[node name="Menu" type="Button" parent="Control"]
+layout_mode = 2
+tooltip_text = "tooltip_menu"
+icon = ExtResource("10_kd7ct")
+
+[node name="Shop" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_22o64")
+
+[node name="Panel" type="Panel" parent="Shop"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -365.0
+offset_top = -160.0
+offset_right = 360.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Shop/Panel"]
+layout_mode = 2
+offset_left = 45.0
+offset_right = 685.0
+offset_bottom = 60.0
+grow_horizontal = 2
+text = "shop_title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GoodsContainer" type="HBoxContainer" parent="Shop/Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+offset_left = 25.0
+offset_top = 60.0
+offset_right = 705.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Skip" type="Button" parent="Shop/Panel"]
+layout_mode = 2
+offset_left = 285.0
+offset_top = 280.0
+offset_right = 445.0
+offset_bottom = 328.0
+grow_horizontal = 2
+grow_vertical = 0
+tooltip_text = "tooltip_skip"
+text = "skip"
+
+[node name="Message" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Message"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -50.0
+offset_right = 240.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Message/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MessageLabel" type="Label" parent="Message/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Message/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+shortcut = SubResource("Shortcut_5ahkg")
+text = "confirm"
+
+[node name="Win" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Win"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -50.0
+offset_right = 240.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Win/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="WinLabel" type="Label" parent="Win/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Win/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "to_menu"
+
+[node name="GameOver" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = 180.0
+offset_right = -240.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOver/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -110.0
+offset_right = 51.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "game over"
+
+[node name="GameOverReason" type="Label" parent="GameOver/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -14.0
+offset_right = 35.5
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reason"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Restart" type="Button" parent="GameOver/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = 90.0
+offset_right = -55.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "restart"
+
+[node name="ToMenu" type="Button" parent="GameOver/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 55.0
+offset_top = 90.0
+offset_right = 145.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "to_menu"
+
+[connection signal="pressed" from="Left/VBoxContainer/SpeedOptions/Button1" to="." method="_change_game_speed" binds= [0.0]]
+[connection signal="pressed" from="Left/VBoxContainer/SpeedOptions/Button2" to="." method="_change_game_speed" binds= [1.0]]
+[connection signal="pressed" from="Left/VBoxContainer/SpeedOptions/Button3" to="." method="_change_game_speed" binds= [2.0]]
+[connection signal="pressed" from="Left/VBoxContainer/SpeedOptions/Button4" to="." method="_change_game_speed" binds= [3.0]]
+[connection signal="pressed" from="Operations/HBoxContainer/Buy" to="." method="_buy"]
+[connection signal="pressed" from="Operations/HBoxContainer/Undo" to="." method="_undo"]
+[connection signal="pressed" from="Operations/HBoxContainer2/Produce" to="." method="_produce"]
+[connection signal="pressed" from="Operations/HBoxContainer2/Preview" to="." method="_preview"]
+[connection signal="pressed" from="Operations/HBoxContainer2/CancelPreview" to="." method="_cancel_preview"]
+[connection signal="pressed" from="Operations/Submit" to="." method="_submit"]
+[connection signal="pressed" from="Operations/Upgrade" to="." method="_upgrade"]
+[connection signal="pressed" from="Control/Restart" to="." method="new_game"]
+[connection signal="pressed" from="Control/Menu" to="." method="_to_menu"]
+[connection signal="pressed" from="Shop/Panel/Skip" to="Shop" method="_on_button_pressed" binds= [-1]]
+[connection signal="gui_input" from="Message" to="." method="_on_message_gui_input"]
+[connection signal="pressed" from="Message/Panel/VBoxContainer/Button" to="Message" method="hide"]
+[connection signal="pressed" from="Win/Panel/VBoxContainer/Button" to="." method="_to_menu"]
+[connection signal="pressed" from="GameOver/Panel/Restart" to="." method="new_game"]
+[connection signal="pressed" from="GameOver/Panel/ToMenu" to="." method="_to_menu"]

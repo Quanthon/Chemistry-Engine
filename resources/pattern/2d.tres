@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Pattern" load_steps=2 format=3 uid="uid://bsnygedw7u04j"]
+
+[ext_resource type="Script" path="res://game/pattern.gd" id="1_xs1ds"]
+
+[resource]
+script = ExtResource("1_xs1ds")
+positions = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 1)])
+weight = 4
